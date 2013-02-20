@@ -153,6 +153,14 @@ body {
 #header-container {
   text-transform: uppercase;
 }
+#header-container nav ul {
+  margin: 0.1em 0;
+  padding: 0;
+}
+#header-container nav ul a {
+  color: black;
+  font-weight: 120%;
+}
 #main-container {
   background-color: black;
   /*  url(../img/loading-bg.jpg) repeat */
@@ -236,8 +244,6 @@ body {
 }
 #include {
   background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1350/1350876.png);
-  /*background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/2027/2027023.png?1323787724);*/
-
 }
 #spread {
   background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png);
@@ -257,7 +263,6 @@ body {
      ==================== */
   nav a {
     float: left;
-    width: 27%;
     margin: 0 1.7%;
     padding: 25px 2%;
     margin-bottom: 0;
@@ -282,12 +287,13 @@ body {
   /* ============
       WIDE: Menu
      ============ */
-  .title {
+  #header-container .title {
     float: left;
   }
-  nav {
+  #header-container nav {
+    width: 50%;
     float: right;
-    width: 38%;
+    white-space: nowrap;
   }
   /* ============
       WIDE: Main
