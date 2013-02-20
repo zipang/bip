@@ -1,0 +1,98 @@
+@import "mixins.less";
+
+
+body {
+    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 5%;
+}
+
+#header-container {
+    text-transform: uppercase;
+}
+
+#main-container {
+    background-color: black;
+    /*  url(../img/loading-bg.jpg) repeat */
+    color: white;
+    width: 100%;
+
+    h1 {
+        text-transform: uppercase;
+        font-size: 2rem;
+    }
+}
+
+
+/* pre-loading of background images */
+.bg-preload #articles {
+    .opacity(0);
+}
+.ie.bg-preload #articles {
+    visibility: hidden;
+}
+
+.transparent.red {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGUlEQVQ4jWP4z8DgSwlmGDVg1IBRA4aLAQCWnUwQ8EKFCAAAAABJRU5ErkJggg==);
+    background: rgba(255, 0, 0, 0.3);
+}
+.transparent.green {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGElEQVQ4jWNg+M/gSxEeNWDUgFEDhosBAJeOTBAXAT1pAAAAAElFTkSuQmCC) repeat;
+    background: rgba(0, 255, 0, 0.3);
+}
+.transparent.blue {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGElEQVQ4jWNgYPjvSxkeNWDUgFEDhokBAJh/TBCAg+U4AAAAAElFTkSuQmCC) repeat;
+    background: rgba(0, 0, 255, 0.3);
+}
+.transparent.yellow {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGUlEQVQ4jWP4/5/BlxLMMGrAqAGjBgwXAwAshksfuWC8agAAAABJRU5ErkJggg==);
+    background: rgba(255, 255, 0, 0.3);
+}
+
+#articles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .opacity(1);
+    .transition(opacity, 2s);
+
+    visibility: visible;
+}
+
+#articles article {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    background-position: center 0;
+    background-repeat: repeat;
+}
+#articles section {
+    width: 100%;
+    padding: 0.5rem;
+    position: absolute;
+    p {
+        display: none;
+    }
+}
+#articles section > * {
+    width: 90%;
+    margin: 0 5%;
+}
+#build {
+    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346214.png);
+}
+#play {
+    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png);
+}
+#include {
+    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1350/1350876.png);
+}
+#spread {
+    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png);
+}
+
+

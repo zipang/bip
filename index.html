@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <link rel="dns-prefetch" href="//ajax.googleapis.com">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>BIP - BACKGROUND IMAGE LOADER</title>
+        <meta name="description" content="Javascript header script to preload background images">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/bip.js"></script>
+        <script>
+            preloadImages(['http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346955.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1351/1351821.png']);
+        </script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="header-container">
+            <header class="wrapper clearfix">
+                <h1 class="title">bip - The Background Image Preloader Script</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#build">Build</a></li>
+                        <li><a href="#play">Play</a></li>
+                        <li><a href="#include">Include</a></li>
+                        <li><a href="#spread">Spread</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div><!-- #header-container -->
+
+        <div id="main-container">
+            <div class="main clearfix">
+
+                <ul id="articles">
+                    <li>
+                        <article id="build">
+                            <section class="transparent blue">
+                                <h1>BUILD</h1>
+                                <h3>Minify and include it with your flavor of Modernizr</h3>
+                                <p>Download your customized version of Modernizr from here.
+                                Then use our build script to concatenate the version of bip at the end of the modernizr script. 
+                                This way, you'll allways have one and only one script to include in your header, and all the others will be just before your closing &lt;/body&gt;
+                                </p>
+                            </section>
+                        </article>
+                    </li>
+                    <li>
+                        <article id="play">
+                            <section class="transparent yellow">
+                                <h1>PLAY</h1>
+                                <h3>Choose your backgrounds</h3>
+                                <p>You could have a lot of fun and surprises digging into <a href="http://www.colourlovers.com">ColourLovers</a> vaults. More than 3 millions of repeatable patterns await you.
+                                </p>
+                            </section>
+                        </article>
+                    </li>
+                    <li>
+                        <article id="include">
+                            <section class="transparent red">
+                                <h1>INCLUDE</h1>
+                                <h3>Include the <code>bip</code> script in your header section, then preload your images</h3>
+                                <code><pre>
+    &lt;script src="js/bip.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        preloadImages(['bg1.png', 'bg2.png', 'bg3.png']);
+    &lt;/script&gt;
+                                </pre></code>
+                            </section>
+                        </article>
+                    </li>
+                    <li>
+                        <article id="spread">
+                            <section class="transparent green">
+                                <h1>SPREAD</h1>
+                                <h3>Use the script on every new project you start with our HTML5 boilerplate and spread the world</h3>
+                                <p>bip.. bip.. bip..
+                                </p>
+                            </section>
+                        </article>
+                    </li>
+                </ul>
+
+            </div> <!-- .main -->
+        </div> <!-- #main-container -->
+
+        <div class="footer-container">
+            <footer class="wrapper">
+                <h3>footer</h3>
+            </footer>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+        <script src="js/plugins.js"></script>
+
+    </body>
+</html>
