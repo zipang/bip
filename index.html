@@ -19,7 +19,10 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/bip.js"></script>
         <script>
-            preloadImages(['http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346955.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1351/1351821.png']);
+            bip.preload(['http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346955.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1351/1351821.png'],
+                {
+                    breakpoints: [480, 1040, 1600]
+                });
         </script>
 
     </head>
@@ -52,7 +55,7 @@
                                 <h1>BUILD</h1>
                                 <h3>Minify and include it with your flavor of Modernizr</h3>
                                 <p>Download your customized version of Modernizr from here.
-                                Then use our build script to concatenate the version of bip at the end of the modernizr script. 
+                                Then use our build script to concatenate the version of bip at the end of the modernizr script.
                                 This way, you'll allways have one and only one script to include in your header, and all the others will be just before your closing &lt;/body&gt;
                                 </p>
                             </section>
