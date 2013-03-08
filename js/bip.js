@@ -21,33 +21,36 @@
                 var i = 0, count = pa_images.length, options = p_options || {},
                     h = document.getElementsByTagName("html")[0],
                     className = (options.className ? options.className : "bg-preload"),
-                    breakpoints = options.breakpoints || [],
-                    loader = breakpoints.length ? options.pathLoader || defaultPathLoader : getImage;
+                    breakpoints = options.breakpoints || false,
+                    loader = options.pathLoader || getImage,
+                    callback = options.callback || (w.console ? console.dir : getImage),
+                    result = {};
 
                 if (count) h.className += (" " + className);
 
-                function onload() {
-                    if (!(--count)) {
-                        h.className = h.className.replace(className, "");
-                        if (options.callback) options.callback(pa_images);
+                function onloadHandler(success) {
+                    return function() {
+                        result[this.src] = success;
+                        if (!(--count)) {
+                            h.className = h.className.replace(className, "");
+                            callback(result);
+                        }
                     }
                 }
 
                 function watch(img) {
-                    img.onload = onload;
+                    img.onload  = onloadHandler(true);
+                    img.onerror = onloadHandler(false);
                     return img;
                 }
 
                 // find the breakpoint matching our screen resolution
-                // breakpoints = [420, 1024, 1600]
-                // screenWidth = 800
+                // Example : breakpoints = [420, 1024, 1600], screenWidth = 800
                 // >> breakpoint = 420
-                var j = breakpoints.length,
-                    screenWidth = w.screen.availWidth || w.screen.width;
+                var screenWidth = w.screen.availWidth || w.screen.width,
+                    breakpoint = screenWidth;
 
-                while (breakpoints[j - 1] > screenWidth) j--;
-                var breakpoint = j ? breakpoints[j - 1] : "mobile";
-                console.log("detected resolution > " + breakpoint);
+                if (breakpoints) while ((breakpoint = breakpoints.pop() || "mobile") > screenWidth) {}
 
                 while (i < count) {
                     watch(new Image()).src = loader(breakpoint, pa_images[i++]);
@@ -59,11 +62,8 @@
     /**
      * Utility Belt
      */
-    function defaultPathLoader(breakpoint, image) {
-        return "images/" + breakpoint + "/" + image;
-    }
     function getImage(breakpoint, image) {
-        return image;
+        return image || breakpoint;
     }
 
     w.bip = bip;
