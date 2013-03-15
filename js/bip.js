@@ -28,13 +28,15 @@
 
                 if (count) h.className += (" " + className);
 
+                function loaded () {
+                    h.className = h.className.replace(className, "");
+                    callback(result);
+                }
+
                 function onloadHandler(success) {
                     return function() {
                         result[this.src] = success;
-                        if (!(--count)) {
-                            h.className = h.className.replace(className, "");
-                            callback(result);
-                        }
+                        if (!(--count)) onDOMReady(loaded);
                     }
                 }
 
@@ -64,6 +66,20 @@
      */
     function getImage(breakpoint, image) {
         return image || breakpoint;
+    }
+    // Taken from jQuery
+    function onDOMReady(callback) {
+
+        if ( document.readyState === "complete" ) {
+            setTimeout( callback );
+
+        } else {
+            // Use the handy event callback
+            document.addEventListener( "DOMContentLoaded", callback, false );
+
+            // A fallback to window.onload, that will always work
+            window.addEventListener( "load", callback, false );
+        }        
     }
 
     w.bip = bip;
