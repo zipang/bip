@@ -19,9 +19,12 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="dist/bip-min.js"></script>
         <script>
-            bip.preload(['http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346955.pngnogood', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png', 'http://colourlovers.com.s3.amazonaws.com/images/patterns/1351/1351821.png'],
+            bip.preload(
+                ['1346/1346955', '1385/1385851', '1355/1355207', '1351/1351821'],
                 {
-                    breakpoints: [480, 1040, 1600]
+                    pathLoader: function(resolution, imgName) {
+                        return "http://colourlovers.com.s3.amazonaws.com/images/patterns/" + imgName + ".png"
+                    }
                 });
         </script>
 
