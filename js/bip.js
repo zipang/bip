@@ -75,10 +75,7 @@
 
         } else {
             function cb_once() {
-              if (!callback.called) {
-                callback();
-                callback.called = true;
-              }
+                callback.called = callback.called || callback() || true;
             }
             // Use the handy event callback
             document.addEventListener( "DOMContentLoaded", cb_once, false );
