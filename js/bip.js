@@ -67,18 +67,24 @@
     function getImage(breakpoint, image) {
         return image || breakpoint;
     }
-    // Taken from jQuery
+    // Taken more or less from jQuery
     function onDOMReady(callback) {
 
         if ( document.readyState === "complete" ) {
             setTimeout( callback );
 
         } else {
+            function cb_once() {
+              if (!callback.called) {
+                callback();
+                callback.called = true;
+              }
+            }
             // Use the handy event callback
-            document.addEventListener( "DOMContentLoaded", callback, false );
+            document.addEventListener( "DOMContentLoaded", cb_once, false );
 
             // A fallback to window.onload, that will always work
-            window.addEventListener( "load", callback, false );
+            window.addEventListener( "load", cb_once, false );
         }        
     }
 
