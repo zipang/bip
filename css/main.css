@@ -146,26 +146,43 @@ BOX SHADOW
 body {
   font: 16px/26px Helvetica, Helvetica Neue, Arial;
 }
+header,
+footer {
+  width: 100%;
+}
 .wrapper {
   width: 90%;
   margin: 0 5%;
 }
-#header-container {
+#main-header {
+  overflow: hidden;
+}
+#main-header h1 {
+  text-transform: uppercase;
+  color: red;
+  margin: 1em 0 0.5em 0;
+}
+#main-header h3 {
+  color: orange;
+  margin: 1em 0 0.2em 0;
+}
+#main-header nav {
+  overflow: hidden;
   text-transform: uppercase;
 }
-#header-container nav ul {
+#main-header nav ul {
+  float: right;
+  white-space: no-wrap;
   margin: 0.1em 0;
   padding: 0;
 }
-#header-container nav ul a {
+#main-header nav ul a {
   color: black;
   font-weight: 120%;
 }
 #main-container {
-  background-color: black;
-  /*  url(../img/loading-bg.jpg) repeat */
-
-  color: white;
+  background: #333;
+  color: #ddd;
   width: 100%;
 }
 #main-container h1 {
@@ -187,7 +204,8 @@ body {
 /**
  * Semi-transparent colored background
  * See http://codepen.io/JosePedroDias/details/lrxzq for the rgba image date generator
- */.transparent.red {
+ */
+.transparent.red {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGUlEQVQ4jWP4z8DgSwlmGDVg1IBRA4aLAQCWnUwQ8EKFCAAAAABJRU5ErkJggg==);
   background: rgba(255, 0, 0, 0.3);
 }
@@ -244,86 +262,47 @@ body {
   margin: 0 5%;
 }
 #build {
-  background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346214.png);
+  background: url(../img/bg-pxbyGre3g-red.png);
 }
 #play {
-  background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png);
+  background: url(../img/bg-play.png);
 }
 #include {
-  background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1350/1350876.png);
+  background: url(../img/bg-include.png);
 }
 #spread {
-  background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png);
+  background: url(../img/bg-spread.png);
+}
+footer {
+  background: url(../img/bg-darkleather.png);
+  background-repeat: repeat;
+  color: white;
+  font-weight: bold;
+}
+code.example {
+  display: block;
+  background: BlanchedAlmond;
+  border: 2px dotted orange;
 }
 /* ==========================================================================
    Media Queries
-   ========================================================================== */
+   ==========================================================================
+
 @media only screen and (min-width: 480px) {
-  /* ====================
-      Articles on the front page
-     ==================== */
-  #articles section p {
-    display: block;
-  }
-  /* ====================
-      INTERMEDIATE: Menu
-     ==================== */
-  nav a {
-    float: left;
-    margin: 0 1.7%;
-    padding: 25px 2%;
-    margin-bottom: 0;
-  }
-  nav li:first-child a {
-    margin-left: 0;
-  }
-  nav li:last-child a {
-    margin-right: 0;
-  }
-  /* ========================
-      INTERMEDIATE: IE Fixes
-     ======================== */
-  nav ul li {
-    display: inline;
-  }
-  .oldie nav a {
-    margin: 0 0.7%;
-  }
+
+    @import "site-gt480.less";
 }
+
 @media only screen and (min-width: 768px) {
-  /* ============
-      WIDE: Menu
-     ============ */
-  #header-container .title {
-    float: left;
-  }
-  #header-container nav {
-    width: 50%;
-    float: right;
-    white-space: nowrap;
-  }
-  /* ============
-      WIDE: Main
-     ============ */
-  .main article {
-    float: left;
-    width: 57%;
-  }
+
+    @import "site-gt768.less";
 }
+
 @media only screen and (min-width: 1140px) {
-  /* ===============
-      Maximal Width
-     =============== */
-  #articles article {
-    height: 600px;
-  }
-  .wrapper {
-    width: 1026px;
-    /* 1140px - 10% for margins */
-  
-    margin: 0 auto;
-  }
+
+    @import "site-gt1140.less";
 }
+*/
 /* ==========================================================================
    Helper classes
    ========================================================================== */

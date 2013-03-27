@@ -5,14 +5,35 @@ body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
 }
 
+header, footer {
+    width: 100%;
+}
+
+
 .wrapper {
     width: 90%;
     margin: 0 5%;
 }
 
-#header-container {
-    text-transform: uppercase;
+#main-header {
+    overflow: hidden;
+
+    h1 {
+        text-transform: uppercase;
+        color: red;
+        margin: 1em 0 0.5em 0;
+    }
+    h3 {
+        color: orange;
+        margin: 1em 0 0.2em 0;
+    }
+    nav {
+        overflow: hidden;
+        text-transform: uppercase;
+    }
     nav ul {
+        float: right;
+        white-space: no-wrap;
         margin: 0.1em 0;
         padding: 0;
         a {
@@ -23,9 +44,8 @@ body {
 }
 
 #main-container {
-    background-color: black;
-    /*  url(../img/loading-bg.jpg) repeat */
-    color: white;
+    background: #333;
+    color: #ddd;
     width: 100%;
 
     h1 {
@@ -46,14 +66,14 @@ body {
 /**
  * Semi-transparent colored background
  * See http://codepen.io/JosePedroDias/details/lrxzq for the rgba image date generator
- */ 
+ */
 .transparent.red {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGUlEQVQ4jWP4z8DgSwlmGDVg1IBRA4aLAQCWnUwQ8EKFCAAAAABJRU5ErkJggg==);
     background: rgba(255, 0, 0, 0.3);
 }
 .transparent.orange {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGUlEQVQ4jWP4X8fgSwlmGDVg1IBRA4aLAQDUncoQNJUDrwAAAABJRU5ErkJggg==);
-    background: rgba(255, 128, 0, 0.3);    
+    background: rgba(255, 128, 0, 0.3);
 }
 .transparent.green {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGElEQVQ4jWNg+M/gSxEeNWDUgFEDhosBAJeOTBAXAT1pAAAAAElFTkSuQmCC) repeat;
@@ -99,16 +119,33 @@ body {
     margin: 0 5%;
 }
 #build {
-    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346214.png);
+    //background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346214.png);
+    background: url(../img/bg-pxbyGre3g-red.png);
 }
 #play {
-    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png);
+    // background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png);
+    background: url(../img/bg-play.png);
 }
 #include {
-    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1350/1350876.png);
+    //background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1350/1350876.png);
+    background: url(../img/bg-include.png);
 }
 #spread {
-    background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png);
+    // background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png);
+    background: url(../img/bg-spread.png);
 }
 
 
+footer {
+    background: url(../img/bg-darkleather.png);
+    background-repeat: repeat;
+    color: white;
+    font-weight: bold;
+}
+
+
+code.example {
+    display: block;
+    background: BlanchedAlmond;
+    border: 2px dotted orange;
+}

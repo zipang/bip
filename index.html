@@ -34,19 +34,20 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <div id="header-container">
-            <header class="wrapper clearfix">
+        <header id="main-header">
+            <hgroup class="wrapper">
                 <h1 class="title">bip - The Background Image Preloader Script</h1>
-                <nav id="main-nav">
-                    <ul>
-                        <li><a href="#build">Build</a></li>
-                        <li><a href="#play">Play</a></li>
-                        <li><a href="#include">Include</a></li>
-                        <li><a href="#spread">Spread</a></li>
-                    </ul>
-                </nav>
-            </header>
-        </div><!-- #header-container -->
+                <h3>v1.0 - (c) zipang 2013 - http://github.com/zipang/bip</h3>
+            </hgroup>
+            <nav id="main-nav" class="wrapper">
+                <ul>
+                    <li><a href="#build">Build</a></li>
+                    <li><a href="#play">Play</a></li>
+                    <li><a href="#include">Include</a></li>
+                    <li><a href="#spread">Spread</a></li>
+                </ul>
+            </nav>
+        </header><!-- #main-header -->
 
         <div id="main-container">
             <div class="main clearfix">
@@ -79,10 +80,10 @@
                             <section class="transparent red">
                                 <h1>INCLUDE</h1>
                                 <h3>Include the <code>bip</code> script in your header section, then preload your images</h3>
-                                <code><pre>
+                                <code class="example"><pre>
     &lt;script src="js/bip.js"&gt;&lt;/script&gt;
     &lt;script&gt;
-        preloadImages(['bg1.png', 'bg2.png', 'bg3.png']);
+        bip.preload(['bg1.png', 'bg2.png', 'bg3.png']);
     &lt;/script&gt;
                                 </pre></code>
                             </section>
@@ -103,11 +104,21 @@
             </div> <!-- .main -->
         </div> <!-- #main-container -->
 
-        <div class="footer-container">
-            <footer class="wrapper">
-                <h3>footer</h3>
-            </footer>
-        </div>
+        <footer>
+            <div class="wrapper">
+            <pre>
+  ______  _____              ________
+  ___  /_ ___(_)________     ______(_)________
+  __  __ \__  / ___  __ \    _____  / __  ___/
+  _  /_/ /_  /  __  /_/ /___ ____  /  _(__  )
+  /_.___/ /_/   _  .___/ _(_)___  /   /____/
+                /_/          /___/
+            </pre>
+            <div class="">
+                Les textures utilisées sur cette page sont empruntées à <a href="http://subtlepatterns.com">sutble patterns</a> ou à <a href="http://colourlovers.com">colourlovers</a>.
+            </div>
+            </div>
+        </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
