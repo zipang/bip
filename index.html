@@ -17,19 +17,24 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="dist/bip-min.js"></script>
+        <script src="js/bip.js"></script>
         <script>
             bip.preload(
-                ['1346/1346955', '1385/1385851', '1355/1355207', '1351/1351821'],
                 {
-                    pathLoader: function(resolution, imgName) {
-                        return "http://colourlovers.com.s3.amazonaws.com/images/patterns/" + imgName + ".png"
+                    "#build": "build",
+                    "#include": "include",
+                    "#play": "play",
+                    "#spread": "spread"
+                },
+                {
+                    pathLoader: function(imgName) {
+                        return "img/vargas/bg-" + imgName + ".jpg"
                     }
                 });
         </script>
 
     </head>
-    <body>
+    <body class="vargas">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -37,7 +42,7 @@
         <header id="main-header">
             <hgroup class="wrapper">
                 <h1 class="title">bip - The Background Image Preloader Script</h1>
-                <h3>v1.0 - (c) zipang 2013 - http://github.com/zipang/bip</h3>
+                <h3>v1.0 - (c) zipang 2013 - <a href="http://github.com/zipang/bip">http://github.com/zipang/bip</a></h3>
             </hgroup>
             <nav id="main-nav" class="wrapper">
                 <ul>
@@ -114,9 +119,6 @@
   /_.___/ /_/   _  .___/ _(_)___  /   /____/
                 /_/          /___/
             </pre>
-            <div class="">
-                Les textures utilisées sur cette page sont empruntées à <a href="http://subtlepatterns.com">sutble patterns</a> ou à <a href="http://colourlovers.com">colourlovers</a>.
-            </div>
             </div>
         </footer>
 
@@ -124,7 +126,11 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script>
+            $(function() {
+                $("#main-nav").localScroll();
+            });
+        </script>
 
     </body>
 </html>

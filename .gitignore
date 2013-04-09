@@ -1,2 +1,4 @@
-/img/subtle\ textures
-/js/vendor
+.DS_Store
+.idea/
+img/subtle-textures/
+js/vendor/

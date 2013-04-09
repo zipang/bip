@@ -3,11 +3,11 @@ bip - Background Images Preloader
 
 Purpose
 -------
-Background images are great. They are repeatable, and maybe even _tilable_, so they can offer great bang for your bucks.
+Background images are _great_. They are repeatable, and maybe even _tilable_, so they really can offer great bang for your bucks.
 
-However, there is a little glitch in all that awesomeness : you dont know when background images are loaded because there is no onload event on background images..
+However, there is a little glitch in all that awesomeness : _you dont know when background images are loaded_ (because there is no onload event on background images..)
 
-When you rely on several big background images to render the mood of your page and if you pay attention to details, this can be a problem at first load : image won't render immediately, and it doesn't provide the ultimate smooth user experience you'd long for.
+When you rely on several big background images to render the mood of your page and if you pay attention to details, this can be a problem at first load : image won't render immediately, and it won't provide the ultimate smooth user experience you'd long for.
 
 Well.. unless you use `bip` (_Background Image Preloader_)
 
