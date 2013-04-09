@@ -129,7 +129,7 @@ USAGE: .border-radius(4px);
 
 */
 /*********************
-TRANSITION
+TRANSITIONS
 *********************/
 /* .transition(all,2s); */
 /*********************
@@ -143,8 +143,30 @@ BOX SHADOW
 *********************/
 /* .boxShadow(0,0,4px,0,#444); */
 /* .boxShadow(none); */
+/**
+ * https://gist.github.com/swider/1268926
+ */
+@font-face {
+  font-family: 'CollegeRegular';
+  src: url('College/COLLEGE-webfont.eot');
+  src: url('College/COLLEGE-webfont.eot?#iefix') format('embedded-opentype'), url('College/COLLEGE-webfont.woff') format('woff'), url('College/COLLEGE-webfont.ttf') format('truetype'), url('College/COLLEGE-webfont.svg#CollegeRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* apply a natural box layout model to all elements */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body {
-  font: 16px/26px Helvetica, Helvetica Neue, Arial;
+  font: 18px/26px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+h1,
+h2,
+h3 {
+  font-family: CollegeRegular;
 }
 header,
 footer {
@@ -155,7 +177,7 @@ footer {
   margin: 0 5%;
 }
 #main-header {
-  overflow: hidden;
+  border: 7px solid orange;
 }
 #main-header h1 {
   text-transform: uppercase;
@@ -182,12 +204,13 @@ footer {
 }
 #main-container {
   background: #333;
-  color: #ddd;
   width: 100%;
 }
 #main-container h1 {
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 3rem;
+  margin: 1.5em 0 0.5em 0;
+  color: #333;
 }
 /* pre-loading of background images */
 .bg-preload #articles {
@@ -246,42 +269,46 @@ footer {
   width: 100%;
   height: 400px;
   position: relative;
-  background-position: center 0;
   background-repeat: repeat;
 }
 #articles section {
   width: 100%;
-  padding: 0.5rem;
+  height: 100%;
+  padding: 0 5%;
   position: absolute;
 }
 #articles section p {
   display: none;
 }
-#articles section > * {
-  width: 90%;
-  margin: 0 5%;
+body.vargas #include {
+  height: 650px;
 }
-#build {
-  background: url(../img/bg-pxbyGre3g-red.png);
+body.vargas #spread {
+  height: 680px;
 }
-#play {
-  background: url(../img/bg-play.png);
+body.colourfull #build {
+  background: url(../img/colourfull/bg-build.png);
 }
-#include {
-  background: url(../img/bg-include.png);
+body.colourfull #play {
+  background: url(../img/colourfull/bg-play.png);
 }
-#spread {
-  background: url(../img/bg-spread.png);
+body.colourfull #include {
+  background: url(../img/colourfull/bg-include.png);
+}
+body.colourfull #spread {
+  background: url(../img/colourfull/bg-spread.png);
 }
 footer {
-  background: url(../img/bg-darkleather.png);
+  background: url(../img/bg-footer.png);
   background-repeat: repeat;
   color: white;
   font-weight: bold;
 }
 code.example {
   display: block;
+  color: blue;
   background: BlanchedAlmond;
+  opacity: 0.5;
   border: 2px dotted orange;
 }
 /* ==========================================================================
