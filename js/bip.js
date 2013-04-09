@@ -5,31 +5,90 @@
  *  _  /_/ /_  /  __  /_/ /___ ____  /  _(__  )
  *  /_.___/ /_/   _  .___/ _(_)___  /   /____/
  *                /_/          /___/
+ */
 
- * BACKGROUND IMAGE PRELOADER
+/**
+ * BACKGROUND IMAGES PRELOADER
  * (c) 2013 - zipang - EIDOLON LABS
  * http://github.com/zipang/bip
  * MIT Licence
  */
+(function(win, doc) {
 
-(function(w) {
+    var html = doc.getElementsByTagName("html")[0],
+        head = doc.getElementsByTagName("head")[0],
+        screenWidth = win.screen.width;
 
-    var bip = {
-        preload: function(pa_images, p_options) {
+    /**
+     * Utility Belt
+     */
+    function getImage(image) {
+        return image;
+    }
 
-            if (document.images) {
-                var i = 0, count = pa_images.length, options = p_options || {},
-                    h = document.getElementsByTagName("html")[0],
-                    className = (options.className ? options.className : "bg-preload"),
+    function assignBg(bgDef, pathLoader) {
+
+        if (bgDef.length) return bgDef; // only an array of images
+
+        var output = [], images = [], i = 0;
+        for (var key in bgDef) {
+          output.push(key, " {background-image: url(", pathLoader(images[i++] = bgDef[key]), ");}\n");
+        }
+        var styleElt = doc.createElement("STYLE"),
+            rules = doc.createTextNode(output.join(""));
+
+        styleElt.appendChild(rules);
+        head.appendChild(styleElt);
+        return images;
+    }
+
+    // Taken from jQuery
+    function onDOMReady(callback) {
+
+        if ( doc.readyState === "complete" ) {
+            setTimeout( callback );
+
+        } else {
+            function cb_once() {
+              if (!callback.called) {
+                callback();
+                callback.called = true;
+              }
+            }
+            // Use the handy event callback
+            doc.addEventListener( "DOMContentLoaded", cb_once, false );
+
+            // A fallback to window.onload, that will always work
+            win.addEventListener( "load", cb_once, false );
+        }
+    }
+
+    win["bip"] = {
+        preload: function(p_images, p_options) {
+
+            if (doc.images) {
+                var options = p_options || {},
+                    className = (options.className !== undefined ? options.className : "bg-preload"),
                     breakpoints = options.breakpoints || false,
-                    loader = options.pathLoader || getImage,
-                    callback = options.callback || (w.console ? console.dir : getImage),
-                    result = {};
+                    breakpoint = screenWidth,
+                    callback = options.callback || (win.console ? console.dir : getImage);
 
-                if (count) h.className += (" " + className);
+                // find the breakpoint matching our screen resolution
+                // Example : breakpoints = [420, 1024, 1600], screenWidth = 800
+                // >> breakpoint = 420
+                if (breakpoints) while ((breakpoint = breakpoints.pop() || "mobile") > screenWidth) {}
+
+                function loader(img) {
+                    return (options.pathLoader || getImage)(img, breakpoint);
+                }
+
+                var images = assignBg(p_images, loader),
+                    count = images.length, i = 0, result = {};
+
+                if (count && className) html.className += (" " + className);
 
                 function loaded () {
-                    h.className = h.className.replace(className, "");
+                    if (className) html.className = html.className.replace(className, "");
                     callback(result);
                 }
 
@@ -46,42 +105,13 @@
                     return img;
                 }
 
-                // find the breakpoint matching our screen resolution
-                // Example : breakpoints = [420, 1024, 1600], screenWidth = 800
-                // >> breakpoint = 420
-                var screenWidth = w.screen.availWidth || w.screen.width,
-                    breakpoint = screenWidth;
-
-                if (breakpoints) while ((breakpoint = breakpoints.pop() || "mobile") > screenWidth) {}
 
                 while (i < count) {
-                    watch(new Image()).src = loader(breakpoint, pa_images[i++]);
+                    watch(new Image()).src = loader(images[i++], breakpoint);
                 }
             }
         }
     }; // bip
 
-    /**
-     * Utility Belt
-     */
-    function getImage(breakpoint, image) {
-        return image || breakpoint;
-    }
-    // Taken from jQuery
-    function onDOMReady(callback) {
 
-        if ( document.readyState === "complete" ) {
-            setTimeout( callback );
-
-        } else {
-            // Use the handy event callback
-            document.addEventListener( "DOMContentLoaded", callback, false );
-
-            // A fallback to window.onload, that will always work
-            window.addEventListener( "load", callback, false );
-        }        
-    }
-
-    w.bip = bip;
-
-})(window);
+})(window, document);

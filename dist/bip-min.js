@@ -1,13 +1,1 @@
-/**
- *  ______  _____              ________
- *  ___  /_ ___(_)________     ______(_)________
- *  __  __ \__  / ___  __ \    _____  / __  ___/
- *  _  /_/ /_  /  __  /_/ /___ ____  /  _(__  )
- *  /_.___/ /_/   _  .___/ _(_)___  /   /____/
- *                /_/          /___/
-
- * BACKGROUND IMAGE PRELOADER
- * (c) 2013 - zipang - EIDOLON LABS
- * http://github.com/zipang/bip
- * MIT Licence
- */(function(e){function n(e,t){return t||e}function r(e){document.readyState==="complete"?setTimeout(e):(document.addEventListener("DOMContentLoaded",e,!1),window.addEventListener("load",e,!1))}var t={preload:function(t,i){if(document.images){var s=0,o=t.length,u=i||{},a=document.getElementsByTagName("html")[0],f=u.className?u.className:"bg-preload",l=u.breakpoints||!1,c=u.pathLoader||n,h=u.callback||(e.console?console.dir:n),p={};o&&(a.className+=" "+f);function d(){a.className=a.className.replace(f,""),h(p)}function v(e){return function(){p[this.src]=e,--o||r(d)}}function m(e){return e.onload=v(!0),e.onerror=v(!1),e}var g=e.screen.availWidth||e.screen.width,y=g;if(l)while((y=l.pop()||"mobile")>g);while(s<o)m(new Image).src=c(y,t[s++])}}};e.bip=t})(window);
+(function(e,t){function o(e){return e}function u(e,n){if(e.length)return e;var r=[],s=[],o=0;for(var u in e)r.push(u," {background-image: url(",n(s[o++]=e[u]),");}\n");var a=t.createElement("STYLE"),f=t.createTextNode(r.join(""));return a.appendChild(f),i.appendChild(a),s}function a(n){if(t.readyState==="complete")setTimeout(n);else{function r(){n.called||(n(),n.called=!0)}t.addEventListener("DOMContentLoaded",r,!1),e.addEventListener("load",r,!1)}}var n=function(e){return t.getElementsByTagName(e)[0]},r=n("html"),i=n("head"),s=e.screen.width;e.bip={preload:function(n,i){if(t.images){var f=i||{},l=f.className!==undefined?f.className:"bg-preload",c=f.breakpoints||!1,h=s,p=f.callback||(e.console?console.dir:o);if(c)while((h=c.pop()||"mobile")>s);function d(e){return(f.pathLoader||o)(e,h)}var v=u(n,d),m=v.length,g=0,y={};m&&l&&(r.className+=" "+l);function b(){l&&(r.className=r.className.replace(l,"")),p(y)}function w(e){return function(){y[this.src]=e,--m||a(b)}}function E(e){return e.onload=w(!0),e.onerror=w(!1),e}while(g<m)E(new Image).src=d(v[g++],h)}}}})(window,document);
