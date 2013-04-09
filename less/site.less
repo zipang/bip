@@ -1,8 +1,33 @@
 @import "mixins.less";
 
 
+
+@font-face {
+  font-family: 'CollegeRegular';
+  src: url('College/COLLEGE-webfont.eot');
+  src: url('College/COLLEGE-webfont.eot?#iefix') format('embedded-opentype'),
+  url('College/COLLEGE-webfont.woff') format('woff'),
+  url('College/COLLEGE-webfont.ttf') format('truetype'),
+  url('College/COLLEGE-webfont.svg#CollegeRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+/* apply a natural box layout model to all elements */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 body {
-    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+  font: 18px/26px @sans-serif;
+  color: #333;
+}
+
+h1, h2, h3 {
+  font-family: CollegeRegular;
 }
 
 header, footer {
@@ -16,7 +41,7 @@ header, footer {
 }
 
 #main-header {
-    overflow: hidden;
+    border: 7px solid orange;
 
     h1 {
         text-transform: uppercase;
@@ -45,12 +70,13 @@ header, footer {
 
 #main-container {
     background: #333;
-    color: #ddd;
     width: 100%;
 
     h1 {
         text-transform: uppercase;
-        font-size: 2rem;
+        font-size: 3rem;
+        margin: 1.5em 0 0.5em 0;
+        color: #333;
     }
 }
 
@@ -108,33 +134,37 @@ header, footer {
 }
 #articles section {
     width: 100%;
-    padding: 0.5rem;
+    height: 100%;
+    padding: 0 5%;
     position: absolute;
     p {
         display: none;
     }
 }
-#articles section > * {
-    width: 90%;
-    margin: 0 5%;
-}
-#build {
-    //background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1346/1346214.png);
-    background: url(../img/bg-build.png);
-}
-#play {
-    // background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1355/1355207.png);
-    background: url(../img/bg-play.png);
-}
-#include {
-    //background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1350/1350876.png);
-    background: url(../img/bg-include.png);
-}
-#spread {
-    // background: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/1385/1385851.png);
-    background: url(../img/bg-spread.png);
+
+body.vargas {
+  #include {
+    height: 650px;
+  }
+  #spread {
+    height: 680px;
+  }
 }
 
+body.colourfull {
+  #build {
+    background: url(../img/colourfull/bg-build.png);
+  }
+  #play {
+    background: url(../img/colourfull/bg-play.png);
+  }
+  #include {
+    background: url(../img/colourfull/bg-include.png);
+  }
+  #spread {
+    background: url(../img/colourfull/bg-spread.png);
+  }
+}
 
 footer {
     background: url(../img/bg-footer.png);
@@ -146,6 +176,8 @@ footer {
 
 code.example {
     display: block;
+    color: blue;
     background: BlanchedAlmond;
+    opacity: 0.5;
     border: 2px dotted orange;
 }
