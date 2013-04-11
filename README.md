@@ -26,7 +26,7 @@ Examples and Use Cases
 
 The most basic usage is just to pre-load a bunch of images files to have them ready as soon as possible.
 
-Without any option, the default `bg-preload` class will be pre-set on the &lt;html&gt;` tag element and will be removed as soon as the images are ready, allowing you for a nice CSS transition..
+Without any option, the default `bg-preload` class will be pre-set on the <html>` tag element and will be removed as soon as the images are ready, allowing you for a nice CSS transition..
 
 ```javascript
 bip.preload([
@@ -76,7 +76,7 @@ bip.preload(['bg1.png', 'bg2.png'], {
 });
 ```
 
-* `className` : pass it to override the default `bg-preload` class name that is set on the `&lt;html&gt;` element. This will allow you to pass different class names for different batch of images to load, thus allowing several transitions to occur..
+* `className` : pass it to override the default `bg-preload` class name that is set on the `<html>` element. This will allow you to pass different class names for different batch of images to load, thus allowing several transitions to occur..
 
 ```javascript
 // load first batch of images
@@ -87,4 +87,28 @@ bip.preload(
 bip.preload(
     ['mountains.png', 'clouds.png'], { className: 'preloading-front-elements' }
 );
+```
+
+* `callback` : function to be called when a batch of images has been fetched.
+
+Sometimes, the sole use of a class name is not enough for the effect you have in mind.
+
+Ìn these cases, use a JavaScript callback and do whatever you want when a bunch of images is loaded. The callback function will receive a status object containing the status (success/error) of each image in the batch. When no callback is provided, a `console.log` is performed instead, thus allowing you to quickly debug image path problems..
+
+```javascript
+// load and check the status of each image
+bip.preload(
+    ['luke', 'leia', 'vador'],
+    {
+        pathLoader: function(key, breakpoint) {
+            return 'images/' + key + '.png';
+        },
+        callback: function(loadStatus) {
+            if (loadStatus.vador === false) {
+                alert('Sorry, no Vador could be found.');
+            }
+        }
+    }
+);
+
 ```
