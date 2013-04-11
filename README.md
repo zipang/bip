@@ -36,6 +36,8 @@ bip.preload([
 ]);
 ```
 
+While a CSS transition could be defined this way in the CSS (or LESS) stylesheet :
+
 ```css
 html.bg-preload bg-zone {
 	opacity: 0; // hide the zone with background images when pre-loading
@@ -49,11 +51,11 @@ bg-zone {
 
 ###More options
 
-While the 1st parameter of bip.preload() is the list of images to load, the second parameter is the options.
+While the 1st parameter of bip.preload() is the list of images to load (or a structure containing the list of images), the second parameter is the options.
 
-Let see what this option parameter can contain :
+Let see what this option object parameter can contain :
 
-    * `pathLoader` : is a function that can interpret your list of files to transform them into real paths. This allows for more succint expressions and adaptive choices.
+* `pathLoader` : a function that can interpret your list of files to transform them into real paths. This allows for more succint expressions and adaptive choices.
 
 ```javascript
 bip.preload([0, 1], {
@@ -61,4 +63,28 @@ bip.preload([0, 1], {
 });
 ```
 
-   * `breakpoints` : an enumeration of screen resolution that will be resolved and passed back to pathLoader as a second parameter
+* `breakpoints` : an enumeration of screen resolution that will be resolved and passed back to pathLoader as a second parameter.
+
+```javascript
+bip.preload(['bg1.png', 'bg2.png'], {
+    breakpoints: [420, 960, 1200],
+    pathLoader: function(key, breakpoint) {
+        // Here we have stored the different versions of the background images in different folders as follows :
+        // images/bg-mobile/, images/bg-420/, images/bg-960/, images/bg-1200/
+        return 'images/bg-' + breakpoint + '/' + key;
+    }
+});
+```
+
+* `className` : pass it to override the default `bg-preload` class name that is set on the `&lt;html&gt;` element. This will allow you to pass different class names for different batch of images to load, thus allowing several transitions to occur..
+
+```javascript
+// load first batch of images
+bip.preload(
+    ['sky.png'], { className: 'preloading-bg-elements' }
+);
+// load a second batch of images
+bip.preload(
+    ['mountains.png', 'clouds.png'], { className: 'preloading-front-elements' }
+);
+```
