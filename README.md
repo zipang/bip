@@ -26,14 +26,14 @@ Examples and Use Cases
 
 The most basic usage is just to pre-load a bunch of images files to have them ready as soon as possible.
 
-Without any option, the default `bg-preload` class will be pre-set on the <html> tag element and will be removes as soon as the images are ready, allowing you for a nice CSS transition..
+Without any option, the default `bg-preload` class will be pre-set on the &lt;html&gt;` tag element and will be removed as soon as the images are ready, allowing you for a nice CSS transition..
 
 ```javascript
-	bip.preload([
-		'images/bg/myfancybg-0.png',
-		'images/bg/myfancybg-1.png'
-		// etc..
-	]);
+bip.preload([
+    'images/bg/myfancybg-0.png',
+    'images/bg/myfancybg-1.png'
+    // etc..
+]);
 ```
 
 ```css
@@ -46,3 +46,19 @@ bg-zone {
 	transition: opacity 2s ease-in-out;
 }
 ```
+
+###More options
+
+While the 1st parameter of bip.preload() is the list of images to load, the second parameter is the options.
+
+Let see what this option parameter can contain :
+
+    * `pathLoader` : is a function that can interpret your list of files to transform them into real paths. This allows for more succint expressions and adaptive choices.
+
+```javascript
+bip.preload([0, 1], {
+    pathLoader: function(key) {return 'images/bg/myfancybg-' + key + '.png';}
+});
+```
+
+   * `breakpoints` : an enumeration of screen resolution that will be resolved and passed back to pathLoader as a second parameter
