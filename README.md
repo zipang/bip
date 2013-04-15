@@ -93,7 +93,7 @@ bip.preload(
 
 Sometimes, the sole use of a class name is not enough for the effect you have in mind.
 
-Ìn these cases, use a JavaScript callback and do whatever you want when a bunch of images is loaded. The callback function will receive a status object containing the status (success/error) of each image in the batch. When no callback is provided, a `console.log` is performed instead, thus allowing you to quickly debug image path problems..
+In these cases, use a JavaScript callback and do whatever you want when a bunch of images is loaded. The callback function will receive a status object containing the status (success/error) of each image in the batch. When no callback is provided, a `console.log` is performed instead, thus allowing you to quickly debug image path problems..
 
 ```javascript
 // load and check the status of each image
@@ -112,3 +112,42 @@ bip.preload(
 );
 
 ```
+
+###More advanced usages
+
+You may soon take notice that declaring images resources in CSS/LESS or SASS files (and maybe, several versions of them in distinct media queries) and declaring the same resources to be pre-loaded in a JavaScript call is not only tedious, but equally painful because loosing sync between the two declarations, may bring you in a state where unwanted resources are effectively pre-loaded and images to display are not.
+
+So, here is an advanced option to declare the images resources you need and effectively affect them to the elements in your page that nedd them. This option will in fact dynamically generate the needed CSS rules.
+
+```javascript
+// load and affect background images by CSS selector
+bip.preload(
+    { // use an object here instead of an array of images keys
+      // each key is a CSS selector, its value is still the (unique) image key to load
+      // (or the path if we don't use a pathLoader)
+        '#header, .hero': 'luke',
+        'aside.leia': 'leia',
+        'footer.dark': 'vador'
+    },
+    { // return the path for a unique image key
+        pathLoader: function(key, breakpoint) {
+            return 'images/' + key + '.png';
+        }
+    }
+);
+```
+
+Some CSS rules could still be used to indicate the repeat options like this:
+
+```css
+aside.leia {
+    background-repeat: none;
+}
+aside.dark {
+    background-repeat: center;
+}
+```
+
+###Usage with Modernizr
+
+The goal of this little script is to pre-load images ressources to have them available as soon as possible, so you'll quickly understand that it should be loaded as early as possible. Thus, its absence of dependance on any library, making possible a very early call in your `<head>` markup. There is another script that is your absolute contender for that position, and its Modernizr, so our recommendation if you happen to need the two together is to concatenate them in a single file.
