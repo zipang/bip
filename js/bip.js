@@ -53,6 +53,7 @@
 	 */
 	function assignBg(bgDef, pathLoader) {
 
+		if (typeof bgDef == "string") return [bgDef]; // a single path
 		if (bgDef.length) return bgDef; // only an array of images > no assignation
 
 		var output = [], images = [], i = 0;
